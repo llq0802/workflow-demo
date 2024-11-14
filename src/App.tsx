@@ -9,6 +9,9 @@ import {
   useEdgesState,
   applyNodeChanges,
   ReactFlowProvider,
+  ControlButton,
+  NodeToolbar,
+  useReactFlow,
 } from '@xyflow/react';
 import { nodes as initialNodes } from './nodes';
 import { edges as initialEdges } from './edges';
@@ -18,9 +21,10 @@ import ResizerNode from './ResizerNode';
 import CircleNode from './CircleNode';
 import TextNode from './TextNode';
 import ButtonEdge from './ButtonEdge';
-import '@xyflow/react/dist/style.css';
-import './overview.css';
+// import '@xyflow/react/dist/style.css';
+// import './overview.css';
 import { useMemoizedFn } from 'ahooks';
+import WorkflowWarp from './workflow';
 
 const nodeTypes = {
   annotation: AnnotationNode,
@@ -37,6 +41,7 @@ const edgeTypes = {
 const nodeClassName = (node) => node.type;
 
 const OverviewFlow = () => {
+  const reactFlow = useReactFlow();
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
@@ -71,18 +76,39 @@ const OverviewFlow = () => {
         edgeTypes={edgeTypes}
         className='overview'
       >
-        {/* <MiniMap zoomable pannable nodeClassName={nodeClassName} /> */}
-        {/* <Controls /> */}
+        <MiniMap zoomable pannable nodeClassName={nodeClassName} />
+        <Controls>
+          <ControlButton onClick={() => alert('Something magical just happened. ✨')}>test</ControlButton>
+
+          <ControlButton
+            onClick={() => {
+              // reactFlow.screenToFlowPosition({
+              //   x: 100,
+              //   y: 100,
+              // });
+              // const ret = reactFlow.flowToScreenPosition({
+              //   x: 0,
+              //   y: 0,
+              // });
+
+              reactFlow.setCenter(0, 0);
+            }}
+          >
+            pingyi
+          </ControlButton>
+        </Controls>
+
         <Background />
       </ReactFlow>
     </div>
   );
 };
 
-export default () => {
+export default function App() {
   return (
-    <ReactFlowProvider>
-      <OverviewFlow />
-    </ReactFlowProvider>
+    // <ReactFlowProvider>
+    //   <OverviewFlow />
+    // </ReactFlowProvider>
+    <WorkflowWarp />
   );
-};
+}

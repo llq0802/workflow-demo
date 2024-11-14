@@ -13,6 +13,7 @@ import {
   useStoreApi,
   getIncomers,
   useInternalNode,
+  useHandleConnections,
 } from '@xyflow/react';
 
 const CircleNode = memo((props) => {
@@ -26,7 +27,6 @@ const CircleNode = memo((props) => {
     }
     return `position x:${parseInt(node.position.x)} y:${parseInt(node.position.y)}`;
   });
-  const connection = useConnection();
   const nodeId = useNodeId()!;
   const nodes = useNodes();
   const edges = useEdges();
@@ -39,13 +39,18 @@ const CircleNode = memo((props) => {
   const nodeData = useNodesData(nodeId);
   // node内部所有东西
   const internalNode = useInternalNode(nodeId);
-
+  // 当前把柄连接的边的集合
+  const connections = useHandleConnections({ type: 'target' });
+  // 连接的边的过程状态
+  const connection = useConnection();
   return (
     <>
       <div className='wrapper gradient'>
         <div className='inner'>{label || 'no node connected'}</div>
       </div>
-      <Handle type='target' position={Position.Left} isConnectable={isConnectable} />
+      <Handle id='xxx-1' type='target' position={Position.Left} isConnectable={isConnectable} />
+      <Handle id='xxx-3' type='target' position={Position.Left} isConnectable={isConnectable} />
+      <Handle id='xxx-2' type='source' position={Position.Right} isConnectable={isConnectable} />
     </>
   );
 });
