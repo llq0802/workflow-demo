@@ -1,7 +1,8 @@
 import { addEdge, Background, ReactFlow, useEdgesState, useNodesState, useReactFlow } from '@xyflow/react';
 import { useMemoizedFn } from 'ahooks';
-import { Flex } from 'antd';
+import { Button, Flex } from 'antd';
 import { initialEdges, initialNodes } from '../default';
+import { edgeTypes, nodeTypes } from '../constant';
 
 const Main = () => {
   const reactFlow = useReactFlow();
@@ -42,9 +43,10 @@ const Main = () => {
         onMoveEnd={(...args) => {
           // console.log('==args====>', args);
         }}
-        // nodeTypes={nodeTypes}
-        // edgeTypes={edgeTypes}
+        nodeTypes={nodeTypes}
+        edgeTypes={edgeTypes}
       >
+        <Button>测试</Button>
         <Background style={{ background: '#f4f4f7' }} />
       </ReactFlow>
     </Flex>

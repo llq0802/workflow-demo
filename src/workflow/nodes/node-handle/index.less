@@ -1,0 +1,23 @@
+div.my-custom-handle {
+  border-radius: 50%;
+  border-radius: 50%;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  border: 0;
+  outline: none;
+  background: transparent;
+  background-color: transparent;
+  .my-custom-handle-icon {
+    transition: transform 0.2s;
+    font-size: 12px;
+    color: #2970ff;
+  }
+
+  &:hover > .my-custom-handle-icon {
+    transform: scale(1.3);
+  }
+}

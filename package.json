@@ -17,6 +17,7 @@
     "@xyflow/react": "^12.2.0",
     "ahooks": "^3.8.1",
     "antd": "^5.22.1",
+    "classnames": "^2.5.1",
     "immer": "^10.1.1",
     "less": "^4.2.0",
     "lexical": "^0.20.0",

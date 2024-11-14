@@ -1,27 +1,28 @@
 import { MarkerType, type Edge, type Node } from '@xyflow/react';
+import { CustomNodeTypeEnum } from './enum';
 
 export const initialNodes = [
   {
     id: '1-1',
-    type: 'input',
+    type: 'custom-node',
     data: {
-      label: 'Input Node',
+      type: CustomNodeTypeEnum.Start,
     },
     position: { x: 150, y: 0 },
   },
   {
     id: '1-2',
-    type: 'default',
+    type: 'custom-node',
     data: {
-      label: 'Default Node',
+      type: CustomNodeTypeEnum.Start,
     },
     position: { x: 0, y: 100 },
   },
   {
     id: '1-3',
-    type: 'output',
+    type: 'custom-node',
     data: {
-      label: 'Output Node',
+      type: CustomNodeTypeEnum.Start,
     },
     position: { x: 300, y: 100 },
   },
@@ -30,13 +31,14 @@ export const initialNodes = [
 export const initialEdges = [
   {
     id: '1-1#1-2',
+    type: 'custom-edge',
     source: '1-1',
     target: '1-2',
     label: 'edge',
-    type: 'smoothstep',
   },
   {
     id: '1-1#1-3',
+    type: 'custom-edge',
     source: '1-1',
     target: '1-3',
     animated: true,
