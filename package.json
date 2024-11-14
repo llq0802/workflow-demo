@@ -14,7 +14,7 @@
     "@lexical/react": "^0.20.0",
     "@types/lodash-es": "^4.17.12",
     "@types/uuid": "^10.0.0",
-    "@xyflow/react": "^12.2.0",
+    "@xyflow/react": "^12.3.5",
     "ahooks": "^3.8.1",
     "antd": "^5.22.1",
     "classnames": "^2.5.1",
