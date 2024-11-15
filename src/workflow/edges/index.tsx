@@ -1,4 +1,4 @@
-import { PlusCircleFilled } from '@ant-design/icons';
+import { CloseCircleFilled, PlusCircleFilled } from '@ant-design/icons';
 import type { EdgeProps } from '@xyflow/react';
 import { BaseEdge, EdgeLabelRenderer, Position, getBezierPath, useReactFlow } from '@xyflow/react';
 import { memo } from 'react';
@@ -9,10 +9,8 @@ const CustomEdge = (props: EdgeProps) => {
   const { id, data, source, sourceHandleId, target, targetHandleId, sourceX, sourceY, targetX, targetY, selected } =
     props;
   const [edgePath, labelX, labelY] = getBezierPath({
-    // sourceX: sourceX - 8,
-    // targetX: targetX + 8,
     sourceX,
-    targetX,
+    targetX: targetX - 2,
     sourceY,
     targetY,
     sourcePosition: Position.Right,
@@ -28,7 +26,7 @@ const CustomEdge = (props: EdgeProps) => {
         path={edgePath}
         style={{
           stroke: selected ? '#2970FF' : '#D0D5DD',
-          strokeWidth: 1.5,
+          strokeWidth: selected ? 3 : 1.5,
           transition: 'stroke .2s',
         }}
       />
@@ -39,11 +37,13 @@ const CustomEdge = (props: EdgeProps) => {
             transform: `translate(-50%, -50%) translate(${labelX}px, ${labelY}px)`,
           }}
         >
-          <PlusCircleFilled
+          <PlusCircleFilled className='add-icon' />
+
+          <CloseCircleFilled
             className='add-icon'
-            // onClick={() => {
-            //   setEdges((es) => es.filter((e) => e.id !== id));
-            // }}
+            onClick={() => {
+              setEdges((es) => es.filter((e) => e.id !== id));
+            }}
           />
         </div>
       </EdgeLabelRenderer>

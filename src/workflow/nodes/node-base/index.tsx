@@ -14,7 +14,15 @@ const BaseNode: FC<BaseNodeProps> = ({ id, data, children }) => {
   const nodeRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className='my-custom-node-container' data-custom-node-id={id} data-custom-node-type={data.type} ref={nodeRef}>
+    <div
+      className='my-custom-node-container'
+      data-custom-node-id={id}
+      data-custom-node-type={data.type}
+      ref={nodeRef}
+      onMouseEnter={(e) => {
+        console.log('enter', id);
+      }}
+    >
       <NodeTargetHandle id={id} data={data} handleId='target' />
       {cloneElement(children, { id, data })}
       <NodeSourceHandle id={id} data={data} handleId='source' />

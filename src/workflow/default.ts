@@ -35,6 +35,12 @@ export const initialEdges = [
     source: '1-1',
     target: '1-2',
     label: 'edge',
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 10,
+      height: 10,
+      color: '#d0d5dd',
+    },
   },
   {
     id: '1-1#1-3',
@@ -43,5 +49,8 @@ export const initialEdges = [
     target: '1-3',
     animated: true,
     label: 'animated edge',
+    markerEnd: {
+      type: MarkerType.Arrow,
+    },
   },
 ] as Edge[];
